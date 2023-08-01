@@ -3,28 +3,29 @@
     <b-row class="px-xl-5">
       <b-col lg="3">
         <b-dropdown
-          toggle-class="shadow-none btn-warning d-flex align-items-center justify-content-between rounded-0"
+          toggle-class="shadow-none d-flex align-items-center justify-content-between text-white upper"
           split-variant="outline-primary"
           variant="none"
-          class="w-100 h-100"
+          size="lg" text="Large"
+          class="w-100 h-100 dropdown-btn"
           menu-class="w-100 rounded-0"
         >
           <template #button-content>
-            <b-icon icon="justify" aria-hidden="true"></b-icon>All Categories
+            <b-icon icon="justify" aria-hidden="true"></b-icon>Categories
           </template>
 
-          <b-dropdown-item href="#" v-for="cat in Category" :key="cat.id">{{
-            cat.name
-          }}</b-dropdown-item>
+          <b-dropdown-item-button class="icon-cart" href="#" v-for="cat in Category" :key="cat.id">
+            {{cat.name}}
+          </b-dropdown-item-button>
         </b-dropdown>
       </b-col>
       <b-col lg="6">
-        <b-list-group horizontal class="pt-2 w-50">
+        <b-list-group horizontal class="pt-2 w-50 header-menu">
           <b-list-group-item
             to="/"
             class="bg-transparent text-white border-0"
             active
-            >Home</b-list-group-item
+            > Home </b-list-group-item
           >
           <b-list-group-item
             href="#Prod-sec"
@@ -96,7 +97,6 @@
             </b-col>
           </b-row>
           <p class="fw-bold d-flex align-items-center justify-content-center">
-            Total: <span class="p-2">{{ total.toFixed(3) }}DT</span>
           </p>
           <b-button
             :to="{
@@ -104,7 +104,7 @@
               params: { cartItems: JSON.stringify(cartItems) },
             }"
             variant="dark"
-            class="see mb-2"
+            class="see mb-2 cart-btn"
             >See cart</b-button
           >
           <b-button to="" variant="success">Proceed to checkout</b-button>
@@ -235,7 +235,7 @@ export default {
 <style scoped lang="scss">
 @import "@/assets/main.scss";
 .container-fluid {
-  background: $color-global;
+  background: #FF7F00;
   z-index: 1001;
   position: sticky;
 }
@@ -252,5 +252,15 @@ export default {
   width: 350px;
   z-index: 1000;
   padding: 16px 20px;
+}
+.dropdown-btn{
+  background-color:#FFA500;
+}
+.header-menu{
+  font-size:18px;
+}
+.cart-btn{
+  background-color:#FFA500;
+  border: none;
 }
 </style>
